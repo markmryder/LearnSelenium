@@ -3,6 +3,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Diagnostics;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
 
 namespace SeleniumWithCSharp
 {
@@ -14,9 +16,10 @@ namespace SeleniumWithCSharp
 		public void Setup()
 		{
 			Debug.WriteLine("Setup");
-			Driver = new ChromeDriver("E:\\SeleniumAutomation\\drivers");
-			//Driver = new ChromeDriver();
-			//Driver.Manage().Window();
+			ChromeOptions options = new ChromeOptions();
+			options.AddArgument("--headless");
+			new DriverManager().SetUpDriver(new ChromeConfig());
+			Driver = new ChromeDriver(options);
 		}
 
 		[Test]
@@ -31,7 +34,6 @@ namespace SeleniumWithCSharp
 
 			string comboControlName = "ContentPlaceHolder1_AllMealsCombo";
 			CustomControl control = new CustomControl();
-			//control.ComboBoxControl(comboControlName, "Almond");
 			CustomControl.ComboBoxControl(comboControlName, "Almond");
 
 			
