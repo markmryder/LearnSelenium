@@ -26,14 +26,15 @@ namespace SeleniumWithCSharp
 		public void Test1()
 		{
 			Driver.Navigate().GoToUrl("https://demowf.aspnetawesome.com/");
-			var element = Driver.FindElement(By.Id("ContentPlaceHolder1_Meal"));
-			element.SendKeys("Tomato");
+			
+			CustomControl.EnterText(Driver.FindElement(By.Id("ContentPlaceHolder1_Meal")), "Tomoato");
 
 			var checkbox = Driver.FindElement(By.XPath("//input[@name='ctl00$ContentPlaceHolder1$ChildMeal1']/following-sibling::div[text()='Celery']"));
-			checkbox.Click();
+			CustomControl.ClickElement(checkbox);
+
+			CustomControl.SelectByText(Driver.FindElement(By.Id("ContentPlaceHolder1_Add1-awed")), "Cauliflower");
 
 			string comboControlName = "ContentPlaceHolder1_AllMealsCombo";
-			CustomControl control = new CustomControl();
 			CustomControl.ComboBoxControl(comboControlName, "Almond");
 
 			
