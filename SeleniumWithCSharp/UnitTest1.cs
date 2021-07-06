@@ -31,7 +31,8 @@ namespace SeleniumWithCSharp
 
 			string comboControlName = "ContentPlaceHolder1_AllMealsCombo";
 			CustomControl control = new CustomControl();
-			control.ComboBoxControl(comboControlName, "Almond");
+			//control.ComboBoxControl(comboControlName, "Almond");
+			CustomControl.ComboBoxControl(comboControlName, "Almond");
 
 			
 			Console.WriteLine("Test1");
